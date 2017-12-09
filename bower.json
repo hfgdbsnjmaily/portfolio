@@ -1,0 +1,13 @@
+{
+  "name": "portfolio",
+  "private": true,
+  "dependencies": {
+    "jquery": "~2.1.1",
+    "foundation-sites": "^6.4.3",
+    "waypoints": "^4.0.1"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^4.0.1"
+  }
+}

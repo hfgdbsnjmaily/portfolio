@@ -1,0 +1,26 @@
+@import "../../bower_components/foundation-sites/scss/foundation";
+
+@import "fonts";
+@import "variables";
+@import "animate";
+
+@import "mixins";
+@import "settings";
+
+//bower:css
+//endbower
+
+//bower:scss
+@import "bower_components/foundation-sites/scss/foundation.scss";
+//endbower
+
+@import "general";
+@import "styles";
+
+
+// iOS font autoscale fix
+@media screen and (max-device-width: 480px){
+	body{
+		-webkit-text-size-adjust: none;
+	}
+}
