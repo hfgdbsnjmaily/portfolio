@@ -57,59 +57,6 @@
         }
     }
 
-    @include breakpoint($row-width down) {
-        padding-right: 30px;
-        padding-left: 30px;
-
-        &__nav {
-            ul {
-                li {
-                margin-right: 40px;
-                }
-            }
-        }
-
-        &__btns {
-            li {
-                margin-right: 40px;
-            }
-        }
-    }
-    
-    @include breakpoint(medium down) {
-        &__btns {
-            white-space: nowrap;
-
-            li {
-                margin-right: 20px;
-
-                i {
-                    margin-right: 0;
-                }
-
-                span {
-                    display: none;
-                }
-            }
-        }
-    }
-    
-    @include breakpoint(medium down) {
-        &__nav {
-            display: none;
-        }
-    }
-    
-    @include breakpoint(small only) {
-        padding-top: 10px;
-        padding-right: 10px;
-        padding-left: 10px;
-
-        svg {
-            width: 120px;
-        }
-    }
-
     &.sticky {
         padding: 0 10px;
 
@@ -124,17 +71,58 @@
 
 .page--landing {
     
+    .vc {
+        height: 100vh;
+    }
+
     h1 {
         font-size: 80px;
         font-weight: 700;
     }
     
+    h2 {
+        font-size: 70px;
+        span {
+            color: #a569a5;
+        }
+    }
+
     .splash {
         position: relative;
         text-align: center;
+    }
 
-        .vc {
-            height: 100vh;
+
+    .contact {
+        width: 100vw;
+        height: 100vh;
+        text-align: center;
+
+        .row {
+
+            &:nth-child(1) {
+                padding-top: 30px;
+            }
+
+            &:nth-child(2) {
+                margin-top: calc(50vh - 200px);
+            }
+        }
+
+        figure {
+            margin-bottom: 20px;
+            height: 100px;
+            display: inline-block;
+
+            img {
+                width: 100%;
+                height: 100px;
+            }
+        }
+
+        .column > div {
+            margin: 0 auto;
+            width: 75%;
         }
     }
 } //end page--landing
