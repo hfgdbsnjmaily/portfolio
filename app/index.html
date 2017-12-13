@@ -16,6 +16,11 @@
 
         <!-- build:css styles/vendor.css -->
         <!-- bower:css -->
+        <link rel="stylesheet" href="/bower_components/gallery/dist/gallery.css" />
+        <link rel="stylesheet" href="/bower_components/gallery/dist/gallery.min.css" />
+        <link rel="stylesheet" href="/bower_components/gallery/dist/gallery.prefixed.css" />
+        <link rel="stylesheet" href="/bower_components/gallery/dist/gallery.prefixed.min.css" />
+        <link rel="stylesheet" href="/bower_components/gallery/dist/gallery.theme.css" />
         <!-- endbower -->
         <!-- endbuild -->
 
@@ -32,16 +37,16 @@
                     <nav class="main-header__nav">
                         <ul>
                             <li>
-                                <a href="#">About me</a>
+                                <a class="nav-link" href="#about-me" onclick="app.move('#about-me', 'bottom', '100vh')">About me</a>
                             </li>
                             <li>
-                                <a href="#">Skills</a>
+                                <a class="nav-link" href="#skills" onclick="app.move('#skills', 'left', '0')">Skills</a>
                             </li>
                             <li>
-                                <a href="#">Portfolio</a>
+                                <a class="nav-link" href="#portfolio">Portfolio</a>
                             </li>
                             <li>
-                                <a href="#">Contact</a>
+                                <a href="#contact">Contact</a>
                             </li>
                         </ul>
                     </nav>
@@ -71,7 +76,7 @@
             <!-- END SPLASH -->
             
             <!-- ABOUT ME -->
-            <section class="about-me">
+            <section class="about-me" id="about-me">
 
 
                         <div class="vc">
@@ -80,7 +85,9 @@
                                     <div class="column large-12">
                                         <h2><span>&mdash;</span> About me <span>&mdash;</span></h2>
                                     </div>
+
                                 </div>
+                                <div class="back"><a href="#start" onclick="app.move('#about-me', 'bottom', '200vh')">BACK</a></div>
                                 <div class="row">
                                     <div class="column medium-5 large-5">
                                         <p>While looking for an idea for my career, I tested many options. I spent several months in office work at a large corporation. This taught me how to <span class="emphasis">organize my work-time</span> and how to <span>work in a team</span>. Then,  I was working for almost two years as an E-Commerce Specialist for two online stores. I gained experience in <span>SEO, advertising campaigns and social media services</span>. While I was preparing banners, graphics and other advertising materials, I found that <span>creating new things</span> from scratch gives me the greatest satisfaction.</p>
@@ -109,97 +116,171 @@
                                 <h2><span>&mdash;</span> Skills <span>&mdash;</span></h2>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="column large-12">
-                                <p>In my projects I use technologies and frameworks such as...</p>
+                        <div class="back"><a href="#start" onclick="app.move('#skills', 'left', '200vw')">BACK</a></div>
+
+
+                            <div class="gallery items-2">
+                                <div id="item-1" class="control-operator"></div>
+                                <div id="item-2" class="control-operator"></div>
+
+                                <figure class="item">
+                                    <div class="row">
+                                        <div class="column large-12">
+                                            <p>In my projects I use technologies and frameworks such as...</p>
+                                        </div>
+                                    </div>
+                                    <div class="row flex-center">
+                                    <div class="column medium-1" data-equalizer-watch>
+
+                                    </div>
+                                    <div class="column medium-1" data-equalizer-watch>
+                                        <figure class="square">
+                                            <img src="images/html-5.png" alt="">
+                                            <h3 class="text">HTML5</h3>
+                                        </figure>
+
+                                        <figure class="square">
+                                            <img src="images/CSS3.png" alt="">
+                                            <h3 class="text">CSS3</h3>
+                                        </figure>
+                                    </div>
+
+                                    <div class="column medium-1" data-equalizer-watch>
+
+                                    </div>
+
+                                    <div class="column medium-1" data-equalizer-watch>
+                                        <figure class="square">
+                                            <img src="images/javascript.svg" alt="">
+                                            <h3 class="text">JAVASCRIPT</h3>
+                                        </figure>
+
+                                        <figure class="square">
+                                            <img src="images/sass.svg" alt="">
+                                            <h3 class="text">SASS</h3>
+                                        </figure>
+                                    </div>
+
+                                    <div class="column medium-1" data-equalizer-watch>
+
+                                    </div>
+
+                                    <div class="column medium-1" data-equalizer-watch>
+                                        <figure class="square">
+                                            <img src="images/bower.svg" alt="">
+                                            <h3 class="text">BOWER</h3>
+                                        </figure>
+
+                                        <figure class="square">
+                                            <img src="images/gulp.svg" alt="">
+                                            <h3 class="text">GULP</h3>
+                                        </figure>
+                                    </div>
+
+                                    <div class="column medium-1" data-equalizer-watch>
+                                    </div>
+
+                                    <div class="column medium-1" data-equalizer-watch>
+                                        <figure class="square">
+                                            <img src="images/git-icon.svg" alt="">
+                                            <h3 class="text">GIT</h3>
+                                        </figure>
+
+                                        <figure class="square">
+                                            <img src="images/photoshop.svg" alt="">
+                                            <h3 class="text">PHOTOSHOP</h3>
+                                        </figure>
+                                    </div>
+
+                                    <div class="column medium-1" data-equalizer-watch>
+                                    </div>
+
+                                    <div class="column medium-1" data-equalizer-watch>
+                                        <figure class="square">
+                                            <img src="images/yeoman.svg" alt="">
+                                            <h3 class="text">YEOMAN</h3>
+                                        </figure>
+                                        <figure class="square">
+                                            <img src="images/yeoman.svg" alt="">
+                                            <h3 class="text">YEOMAN</h3>
+                                        </figure>
+                                    </div>
+                                    <div class="column medium-1" data-equalizer-watch>
+
+                                    </div>
+                                    <div class="column medium-1" data-equalizer-watch>
+
+                                    </div>
+                                    </div>
+                                </figure>
+
+                                <figure class="item">
+                                    <div class="row">
+                                        <div class="column large-12">
+                                            <p>In the near future I'll be learning technologies and frameworks such as...</p>
+                                        </div>
+                                    </div>
+                                    <div class="row flex-center">
+                                        <div class="column medium-1" data-equalizer-watch>
+
+                                        </div>
+                                        <div class="column medium-1" data-equalizer-watch>
+
+                                        </div>
+
+                                        <div class="column medium-1" data-equalizer-watch>
+
+                                        </div>
+
+                                        <div class="column medium-1" data-equalizer-watch>
+                                            <figure class="square">
+                                                <img src="images/foundation.svg" alt="">
+                                                <h3 class="text">FOUNDATION</h3>
+                                            </figure>
+                                        </div>
+
+                                        <div class="column medium-1" data-equalizer-watch>
+                                        </div>
+
+                                        <div class="column medium-1" data-equalizer-watch>
+                                        </div>
+
+                                        <div class="column medium-1" data-equalizer-watch>
+                                        </div>
+
+                                        <div class="column medium-1" data-equalizer-watch>
+                                            <figure class="square">
+                                                <img src="images/angular.svg" alt="">
+                                                <h3 class="text">ANGULAR</h3>
+                                            </figure>
+                                        </div>
+
+                                        <div class="column medium-1" data-equalizer-watch>
+
+                                        </div>
+
+                                        <div class="column medium-1" data-equalizer-watch>
+                                        </div>
+                                        <div class="column medium-1" data-equalizer-watch>
+
+                                        </div>
+                                        <div class="column medium-1" data-equalizer-watch>
+
+                                        </div>
+                                    </div>
+                                </figure>
+
+                                <div class="controls">
+                                    <a href="#item-1" class="control-button">•</a>
+                                    <a href="#item-2" class="control-button">•</a>
+                                  </div>
+
                             </div>
+
+
                         </div>
 
-                        <div class="row flex-center">
-                            <div class="column medium-1" data-equalizer-watch>
 
-                            </div>
-                            <div class="column medium-1" data-equalizer-watch>
-                                <figure>
-                                    <img src="images/html-5.png" alt="">
-                                    <h3 class="text">HTML5</h3>
-                                </figure>
-
-                                <figure>
-                                    <img src="images/CSS3.png" alt="">
-                                    <h3 class="text">CSS3</h3>
-                                </figure>
-                            </div>
-
-                            <div class="column medium-1" data-equalizer-watch>
-
-                            </div>
-
-                            <div class="column medium-1" data-equalizer-watch>
-                                <figure>
-                                    <img src="images/javascript.svg" alt="">
-                                    <h3 class="text">JAVASCRIPT</h3>
-                                </figure>
-
-                                <figure>
-                                    <img src="images/sass.svg" alt="">
-                                    <h3 class="text">SASS</h3>
-                                </figure>
-                            </div>
-
-                            <div class="column medium-1" data-equalizer-watch>
-
-                            </div>
-
-                            <div class="column medium-1" data-equalizer-watch>
-                                <figure>
-                                    <img src="images/bower.svg" alt="">
-                                    <h3 class="text">BOWER</h3>
-                                </figure>
-
-                                <figure>
-                                    <img src="images/gulp.svg" alt="">
-                                    <h3 class="text">GULP</h3>
-                                </figure>
-                            </div>
-
-                            <div class="column medium-1" data-equalizer-watch>
-                            </div>
-
-                            <div class="column medium-1" data-equalizer-watch>
-                                <figure>
-                                    <img src="images/git-icon.svg" alt="">
-                                    <h3 class="text">GIT</h3>
-                                </figure>
-
-                                <figure>
-                                    <img src="images/photoshop.svg" alt="">
-                                    <h3 class="text">PHOTOSHOP</h3>
-                                </figure>
-                            </div>
-
-                            <div class="column medium-1" data-equalizer-watch>
-                            </div>
-
-                            <div class="column medium-1" data-equalizer-watch>
-                                <figure>
-                                    <img src="images/yeoman.svg" alt="">
-                                    <h3 class="text">YEOMAN</h3>
-                                </figure>
-                                <figure>
-                                    <img src="images/yeoman.svg" alt="">
-                                    <h3 class="text">YEOMAN</h3>
-                                </figure>
-                            </div>
-                            <div class="column medium-1" data-equalizer-watch>
-
-                            </div>
-                            <div class="column medium-1" data-equalizer-watch>
-
-                            </div>
-                        </div>
-
-                    </div>
                 </div>
 
             </section>
@@ -221,7 +302,7 @@
                                 <h2><span>&mdash;</span> Contact <span>&mdash;</span></h2>
                             </div>
                         </div>
-
+                        <div class="back"><a href="#start">BACK</a></div>
                         <div class="row">
                             <div class="column medium-4 large-4">
                                 <div class="contact-box" style="background: url(images/smartphone.svg)">

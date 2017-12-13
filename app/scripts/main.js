@@ -5,30 +5,52 @@ window.app = {
       $(document).foundation();
    },
 
-   scrollTo: function() {
-      $(document).on("click", "[data-scroll-to]", function(e) {
-         var _this = $(this).is("a") ? $(this)[0].hash : $(this).data("scroll-to");
-         if (_this) {
-            app.scrolling = true;
-            app.setActive(_this.substring(1));
+    toggleMenu: function() {
 
-            e.preventDefault();
-            $("html, body").animate({
-               scrollTop: $(_this).offset().top - $('header.main-header').height()
-            }, 2000, function() {
-               app.scrolling = false;
-            });
-         }
+        $(".main-header nav > ul > li > a").click(function(){
+            $("header.main-header").addClass("hidden");
+
+        });
+
+        $(".nav-link").click(function(){
+            $(".splash").addClass("hidden");
+
+        });
+
+
+
+        $(".back > a").click(function(){
+            $("header.main-header").removeClass("hidden");
+            $(".splash").removeClass("hidden");
+
+        });
+    },
+
+    move: function move(section, direction, value) {
+        console.log(section, direction, value);
+        $(section).css(direction, value);
+    },
+
+   scrollTo: function() {
+      $('a[href*="#"]:not([href="#"])').click(function() {
+
+        if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+
+          let target = $(this.hash);
+          target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+
+          if (target.length) {
+
+            $('html, body').animate({
+
+              scrollTop: target.offset().top
+            }, 1000);
+
+            return false;
+          }
+        }
       });
    },
-
-   fixedHeader: function() {
-      if ($(window).scrollTop() > 20)
-         $("header.main-header").addClass("sticky");
-      else
-         $("header.main-header").removeClass("sticky");
-   },
-
 
    animationOnScroll: function() {
       $('[data-anim]').each(function(i, element) {
@@ -54,32 +76,6 @@ window.app = {
       });
    },
 
-   menuSlide: function menuSlide() {
-      var navOffset = $(".main-header nav").offset().left;
-
-      if ($(".main-header nav > ul > li").hasClass("active")) {
-
-         $(".hover-line").css("width", $(".main-header nav > ul > li.active > a").width())
-            .addClass("visible")
-            .css("left", $(".main-header nav > ul > li.active > a").position().left);
-      } else
-         $(".hover-line").removeClass("visible");
-
-      $(".hover-line-element").hover(function() {
-            if ($(this).find("a").length)
-               $(".hover-line").css("width", $(this).find("a").width()).addClass("visible")
-               .css("left", $(this).find("a").position().left);
-         }, function() {
-            $(".hover-line").removeClass("visible");
-
-            if ($(".main-header nav > ul > li.active").length)
-               $(".hover-line").css("width", $(".main-header nav > ul > li.active > a").width())
-               .addClass("visible")
-               .css("left", $(".main-header nav > ul > li.active > a").position().left);
-         }
-
-      );
-   },
    scrolling: false,
     
    inBounds: function(element, offsetTop) {
@@ -103,57 +99,12 @@ window.app = {
    },
 
 
-   setActive: function(section, subsection) {
-      subsection = subsection || false;
-
-      if (subsection) {
-         $('.step-navigation li').removeClass('active');
-
-         $('.step-navigation li._' + section).addClass('active').prevAll().addClass('active');
-         return;
-      }
-
-      if (section == "how-it-works")
-         $('.step-navigation').addClass("active");
-      else
-         $('.step-navigation').removeClass("active");
-
-      $('header.main-header nav li').removeClass('active');
-      if (!section) return;
-      $('header.main-header nav li._' + section).addClass('active');
-   },
-
-
-
-   onScroll: function onScroll() {
-      app.fixedHeader();
-      var headerOffset = $('header.main-header').height();
-
-      if (app.inBounds($('#how-it-works'), 'center'))
-         app.setActive('how-it-works');
-      else if (app.inBounds($('#functions'), 'center'))
-         app.setActive('functions');
-      else if (app.inBounds($('#download'), 'center'))
-         app.setActive('download');
-      else
-         app.setActive(null);
-
-      if (app.inBounds($('#step-1'), -200))
-         app.setActive('step-1', true);
-      else if (app.inBounds($('#step-2'), -500))
-         app.setActive('step-2', true);
-      else if (app.inBounds($('#step-3'), 100))
-         app.setActive('step-3', true);
-
-      app.menuSlide();
-   },
-
 
    init: function init() {
       app.foundation();
       app.scrollTo();
       app.animationOnScroll();
-      app.menuSlide();
+       app.toggleMenu();
    }
 };
 

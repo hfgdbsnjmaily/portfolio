@@ -5,6 +5,8 @@
     width: 100%;
     height: 100%;
     position: absolute;
+    transition: all 0.5s ease-in-out;
+
 
     .column {
         display: flex;
@@ -50,6 +52,7 @@
             font-size: 16px;
             font-weight: 500;
             text-transform: uppercase;
+            transition: all 0s ease-in-out;
 
             &:hover {
                 color: $gray;
@@ -57,19 +60,17 @@
         }
     }
 
-    &.sticky {
-        padding: 0 10px;
-
-        .logo {
-            svg {
-                width: 120px;
-            }
-        }
+}
+.hidden {
+    visibility: hidden;
+    a, h1, h2 {
+        color: white;
     }
 }
 
-
 .page--landing {
+
+    position: relative;
 
     h1 {
         font-size: 80px;
@@ -87,14 +88,34 @@
         height: 100vh;
         position: relative;
         text-align: center;
+        transition: all 0s ease-in-out;
+    }
+
+    .skills {
+        position: absolute;
+        left: 200vw;
+        top: 0;
+    }
+
+    .about-me {
+        position: absolute;
+        bottom: 200vh;
+
+    }
+
+    .contact {
+        //position: absolute;
     }
 
     .contact, .skills, .portfolio, .about-me {
         width: 100vw;
         height: 100vh;
         text-align: center;
-        border-top: 1px solid black;
-        position: relative;
+        //border-top: 1px solid black;
+        //position: relative;
+
+        transition-property: top, bottom, left, right;
+        transition-duration: 0.5s;
         h2 {
             margin: 0;
             position: absolute;
@@ -105,15 +126,23 @@
         }
     }
 
+    .back {
+        position: absolute;
+        top: 30px;
+        left: 30px;
+    }
+
     .about-me {
         display:flex;
-            align-items:center;
-            justify-content:center;
+        align-items:center;
+        justify-content:center;
 
         background-image: url(../images/about-me-bg.png);
         background-size: contain;
         background-repeat: no-repeat;
         background-position: right;
+
+
 
         p {
             //line-height: 2;
@@ -125,6 +154,7 @@
     }
 
     .skills {
+
         .medium-1 {
             &:nth-child(even) {
                 margin-top: 105px;
@@ -135,7 +165,20 @@
             }
         }
 
-        figure {
+        .item {
+            background: none;
+            height: auto;
+        }
+
+        .controls {
+            position: relative;
+            a {
+                color: black !important;
+            }
+        }
+
+        .square {
+
             height: 150px;
             width: 150px;
             //position: relative;
