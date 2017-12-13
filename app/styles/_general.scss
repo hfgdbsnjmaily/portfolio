@@ -120,3 +120,9 @@ $x: 8;
 	@include fit-cover();
 }
 
+.flex-center {
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+

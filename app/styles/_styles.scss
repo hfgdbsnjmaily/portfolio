@@ -70,10 +70,6 @@
 
 
 .page--landing {
-    
-    .vc {
-        height: 100vh;
-    }
 
     h1 {
         font-size: 80px;
@@ -88,15 +84,109 @@
     }
 
     .splash {
+        height: 100vh;
         position: relative;
         text-align: center;
     }
 
-
-    .contact {
+    .contact, .skills, .portfolio, .about-me {
         width: 100vw;
         height: 100vh;
         text-align: center;
+        border-top: 1px solid black;
+        position: relative;
+        h2 {
+            margin: 0;
+            position: absolute;
+            top: 30px;
+            left: 50%;
+            margin-right: -50%;
+            transform: translate(-50%)
+        }
+    }
+
+    .about-me {
+        display:flex;
+            align-items:center;
+            justify-content:center;
+
+        background-image: url(../images/about-me-bg.png);
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: right;
+
+        p {
+            //line-height: 2;
+            span {
+                font-weight: 700;
+                font-size: 120%;
+            }
+        }
+    }
+
+    .skills {
+        .medium-1 {
+            &:nth-child(even) {
+                margin-top: 105px;
+                margin-left: 15px;
+            }
+            &:nth-child(odd) {
+                margin-left: 15px;
+            }
+        }
+
+        figure {
+            height: 150px;
+            width: 150px;
+            //position: relative;
+            //text-align: center;
+            padding: 25px;
+            border: 1px solid #919191;
+            border-radius: 5px;
+            transform: rotate(45deg);
+            margin-bottom: 60px;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            transition: all 0.5s ease-in-out;
+
+            img {
+                position: relative;
+                height: 100px;
+                width: 100px;
+                transform: rotate(-45deg);
+                opacity: .1;
+                transition: all 0.5s ease-in-out;
+                filter: grayscale(50%);
+            }
+
+            &:hover {
+                transform: rotate(0);
+                img {
+                    opacity: 1;
+                    filter: grayscale(0%);
+                    transform: scale(1.05) rotate(0);
+                }
+
+                h3 {
+                    opacity: 0;
+                }
+            }
+
+
+            h3 {
+                position: absolute;
+
+                transition: opacity 0.5s ease-in-out;
+                opacity: 1;
+                transform: rotate(-45deg);
+            }
+        }
+    }
+
+
+    .contact {
+
 
         .row {
 
@@ -104,25 +194,87 @@
                 padding-top: 30px;
             }
 
-            &:nth-child(2) {
-                margin-top: calc(50vh - 200px);
-            }
         }
 
-        figure {
+        h3 {
+            transition: all 0.5s ease-in-out;
+            transform: scale(1);
+        }
+
+        a {
+            &:hover {
+                color: #a569a5;
+            }
+
+        }
+
+        .contact-box {
+            border-radius: 50%;
             margin-bottom: 20px;
-            height: 100px;
-            display: inline-block;
+            height: 250px;
+            width: 250px;
+            //opacity: .1;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
 
-            img {
-                width: 100%;
-                height: 100px;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+
+            &:hover {
+                h3 {
+                    transform: scale(1.5);
+                }
             }
+
+
+
+
         }
+
+
+
 
         .column > div {
             margin: 0 auto;
-            width: 75%;
         }
     }
+
+    .main-footer {
+        margin-top: -100px;
+        padding-top: 30px;
+        text-align: center;
+        position: relative;
+
+        p {
+            margin: 0;
+        }
+
+        a {
+            color: black;
+
+            &:hover {
+                color: #a569a5;
+            }
+        }
+
+        &:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            height: 2px;
+            width: 45px;
+            background: #a569a5;
+            display: block;
+        }
+    }
+
 } //end page--landing
+
+
+
+
+
