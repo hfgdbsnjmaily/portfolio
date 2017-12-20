@@ -1,27 +1,55 @@
-var ANIM_END = "animationend oAnimationEnd Animationend webkitAnimationEnd";
+var ANIM_END = 'animationend oAnimationEnd Animationend webkitAnimationEnd';
+var slideIndex = 1;
 
 window.app = {
    foundation: function foundation() {
       $(document).foundation();
    },
 
+    currentDiv: function currentDiv(n) {
+        app.carousel(slideIndex = n);
+        document.getElementById('slide1').className += ' animated bounceInLeft';
+        document.getElementById('slide2').className += ' animated bounceInRight';
+    },
+
+    carousel: function(n) {
+
+        var i;
+        var x = document.getElementsByClassName('slide');
+        var dots = document.getElementsByClassName('dot');
+        if (n > x.length) {slideIndex = 1}
+        if (n < 1) {slideIndex = x.length}
+        for (i = 0; i < x.length; i++) {
+         x[i].style.visibility = 'hidden';
+
+         x[i].style.display = 'none';
+        }
+        for (i = 0; i < dots.length; i++) {
+         dots[i].className = dots[i].className.replace(' active', '');
+        }
+        x[slideIndex-1].style.visibility = 'visible';
+        x[slideIndex-1].style.display = 'block';
+        dots[slideIndex-1].className += ' active';
+
+    },
+
     toggleMenu: function() {
 
-        $(".main-header nav > ul > li > a").click(function(){
-            $("header.main-header").addClass("hidden");
+        $('.main-header nav > ul > li > a').click(function(){
+            $('header.main-header').addClass('hidden');
 
         });
 
-        $(".nav-link").click(function(){
-            $(".splash").addClass("hidden");
+        $('.nav-link').click(function(){
+            $('.splash').addClass('hidden');
 
         });
 
 
 
-        $(".back > a").click(function(){
-            $("header.main-header").removeClass("hidden");
-            $(".splash").removeClass("hidden");
+        $('.back > a').click(function(){
+            $('header.main-header').removeClass('hidden');
+            $('.splash').removeClass('hidden');
 
         });
     },
@@ -105,6 +133,7 @@ window.app = {
       app.scrollTo();
       app.animationOnScroll();
        app.toggleMenu();
+       app.carousel(1);
    }
 };
 
@@ -113,7 +142,7 @@ $(function() {
    app.init();
 
    $(window).resize(app.onResize);
-   $(document).on("scroll ontouchstart", app.onScroll);
-   $(window).trigger("resize");
-   $(window).trigger("scroll");
+   $(document).on('scroll ontouchstart', app.onScroll);
+   $(window).trigger('resize');
+   $(window).trigger('scroll');
 });

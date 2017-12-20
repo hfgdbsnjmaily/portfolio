@@ -130,3 +130,14 @@ $x: 8;
     justify-content:center;
 }
 
+.arrow {
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    width: 50px !important;
+    height: auto !important;
+    transition: all .5s linear !important;
+    &:hover {
+        transform: scale(1.1) !important;
+        background: none !important;
+    }
+}

@@ -62,9 +62,9 @@
 
 }
 .hidden {
-    visibility: hidden;
+    z-index: 1;
     a, h1, h2 {
-        color: white;
+       // color: white;
     }
 }
 
@@ -73,14 +73,14 @@
     position: relative;
 
     h1 {
-        font-size: 80px;
+        //font-size: 80px;
         font-weight: 700;
     }
     
     h2 {
-        font-size: 70px;
+        //font-size: 70px;
         span {
-            color: #a569a5;
+            color: $primary;
         }
     }
 
@@ -89,33 +89,35 @@
         position: relative;
         text-align: center;
         transition: all 0s ease-in-out;
+        z-index: 1;
     }
 
     .skills {
         position: absolute;
-        left: 200vw;
+        left: 100vw;
         top: 0;
     }
 
     .about-me {
         position: absolute;
-        bottom: 200vh;
+        bottom: 100vh;
 
     }
 
     .contact {
-        //position: absolute;
+        position: absolute;
+        top: 100vh;
     }
 
     .contact, .skills, .portfolio, .about-me {
         width: 100vw;
         height: 100vh;
         text-align: center;
-        //border-top: 1px solid black;
-        //position: relative;
+        z-index: 3;
+        background-color: white;
 
         transition-property: top, bottom, left, right;
-        transition-duration: 0.5s;
+        transition-duration: 1s;
         h2 {
             margin: 0;
             position: absolute;
@@ -142,10 +144,40 @@
         background-repeat: no-repeat;
         background-position: right;
 
+        .row {
+            &:last-child {
+                .column {
+                    //background: rgba(62, 62, 62, 0.31);
+                    //padding: 10px;
+                    border-left: 5px $primary solid;
+                }
+
+            }
+        }
+
+        .social {
+           float: right;
+        }
+
+        a {
+            padding-left: 15px;
+        }
+
+        img {
+            border-radius: 50%;
+            width: 60px;
+            height: auto;
+            transition: all .5s linear;
+            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+            &:hover {
+                background: $secondary;
+                transform: scale(1.2);
+                box-shadow: 0px 8px 15px rgba(128, 0, 128, 0.4);
+            }
+        }
 
 
         p {
-            //line-height: 2;
             span {
                 font-weight: 700;
                 font-size: 120%;
@@ -165,26 +197,42 @@
             }
         }
 
-        .item {
-            background: none;
-            height: auto;
+
+        .slide {
+            visibility: hidden;
+            display: block;
+
+            &:nth-child(2) {
+                height: 570px;
+            }
         }
 
         .controls {
-            position: relative;
-            a {
-                color: black !important;
+            .dot {
+                background-color: transparent;
+                display:inline-block;
+                height:13px;
+                width:13px;
+                padding:0;
+                cursor: pointer;
+                text-align:center;
+                border-radius:50%;
+                border:1px solid $primary;
+
+                &.active {
+                    background-color: $primary;
+                }
             }
         }
+
+
 
         .square {
 
             height: 150px;
             width: 150px;
-            //position: relative;
-            //text-align: center;
             padding: 25px;
-            border: 1px solid #919191;
+            border: 1px solid $gray;
             border-radius: 5px;
             transform: rotate(45deg);
             margin-bottom: 60px;
@@ -204,6 +252,7 @@
             }
 
             &:hover {
+                border: 1px solid $primary;
                 transform: rotate(0);
                 img {
                     opacity: 1;
@@ -225,16 +274,22 @@
                 transform: rotate(-45deg);
             }
         }
+
+        @include breakpoint(large down) {
+            .slider {
+                transform: scale(.7);
+            }
+        }
     }
 
 
     .contact {
 
-
         .row {
 
             &:nth-child(1) {
                 padding-top: 30px;
+
             }
 
         }
@@ -245,29 +300,62 @@
         }
 
         a {
+            color: $gray;
+            z-index: 3;
+            position: relative;
             &:hover {
-                color: #a569a5;
+                color: $primary;
+
             }
 
         }
 
         .contact-box {
-            border-radius: 50%;
+
+            transition: all 0.5s ease-in-out;
+            //background-color: rgba(255, 0, 0, 0.43);
+            //border-radius: 50%;
             margin-bottom: 20px;
             height: 250px;
             width: 250px;
             //opacity: .1;
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-position: center;
-
+            //background-repeat: no-repeat;
+            //background-size: cover;
+            //background-position: center;
+            position: relative;
             display:flex;
             align-items:center;
             justify-content:center;
 
+            svg {
+                box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+                border-radius: 50%;
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                z-index: 0;
+
+
+                path, circle {
+                    transition: 1s;
+                    z-index: 0;
+                }
+            }
+
+
             &:hover {
+                transform: scale(1.1);
                 h3 {
-                    transform: scale(1.5);
+
+                }
+                svg {
+                    path, circle {
+
+                        fill: $secondary;
+                        box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.5);
+                    }
+
                 }
             }
 
@@ -298,7 +386,7 @@
             color: black;
 
             &:hover {
-                color: #a569a5;
+                color: $primary;
             }
         }
 
@@ -310,7 +398,7 @@
             transform: translateX(-50%);
             height: 2px;
             width: 45px;
-            background: #a569a5;
+            background: $primary;
             display: block;
         }
     }
