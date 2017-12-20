@@ -84,6 +84,25 @@
         }
     }
 
+    .btn {
+        transition: all .5s ease-in-out;
+        font-size: 16px;
+        font-weight: 600;
+        display: inline-block;
+        padding: 12px 30px;
+        box-sizing: border-box;
+        text-align: center;
+        cursor: pointer;
+        background: $primary;
+        color: white;
+        border-radius: 100px;
+        box-shadow: 0 10px 20px 0 rgba(white, 0.25);
+        &:hover {
+            transform: scale(1.1);
+      }
+
+    }
+
     .splash {
         height: 100vh;
         position: relative;
@@ -101,6 +120,13 @@
     .about-me {
         position: absolute;
         bottom: 100vh;
+
+    }
+
+    .portfolio {
+        position: absolute;
+        right: 100vw;
+        top: 0;
 
     }
 
@@ -185,6 +211,78 @@
         }
     }
 
+    .portfolio {
+
+        .mockup {
+            transition: all .5s linear;
+            position: absolute;
+            max-height: 40vh;
+            height: 40vh;
+            width: 25vw;
+            max-width: 50vw;
+            right: 0;
+            bottom: 0;
+            background-image: url(../images/mockup1.png);
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-color: $primary;
+            .btn {
+                background: $secondary;
+                visibility: hidden;
+                opacity: 0;
+            }
+
+            &:nth-of-type(4) {
+                background-color: #756C83;
+                bottom: 40vh;
+
+                .btn {
+                    background: #FBFBFB;
+                    color: #756C83;
+                }
+            }
+            &:nth-of-type(5) {
+                background-color: #FBFBFB;
+                right: 25vw;
+                .btn {
+                    background: #756C83;
+                }
+            }
+            &:nth-of-type(6) {
+                background-color: $primary;
+                right: 25vw;
+                bottom: 40vh;
+            }
+
+            &.big {
+                max-height: 80vh;
+                height: 80vh;
+                width: 50vw;
+                left: 0;
+                background-color: $secondary;
+                .btn {
+                    background: $primary;
+                }
+            }
+
+            &:hover {
+                background-image: url(../images/mockup1hover.png);
+                .btn {
+                    visibility: visible;
+                    opacity: 1;
+                }
+            }
+        }
+
+        .btn {
+            position: relative;
+            margin-left: 15px;
+            margin-right: 15px;
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+    }
     .skills {
 
         .medium-1 {
@@ -240,6 +338,7 @@
             align-items:center;
             justify-content:center;
             transition: all 0.5s ease-in-out;
+            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
 
             img {
                 position: relative;
@@ -254,6 +353,7 @@
             &:hover {
                 border: 1px solid $primary;
                 transform: rotate(0);
+                box-shadow: 0px 8px 15px rgba(128, 0, 128, 0.4);
                 img {
                     opacity: 1;
                     filter: grayscale(0%);
