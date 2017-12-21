@@ -173,9 +173,9 @@
         .row {
             &:last-child {
                 .column {
-                    //background: rgba(62, 62, 62, 0.31);
-                    //padding: 10px;
-                    border-left: 5px $primary solid;
+                    padding-bottom: 20px;
+                    border-left: 2px $primary solid;
+                    border-bottom: 2px $primary solid;
                 }
 
             }
@@ -214,7 +214,9 @@
     .portfolio {
 
         .mockup {
+
             transition: all .5s linear;
+            transition: background-color 1s linear;
             position: absolute;
             max-height: 40vh;
             height: 40vh;
@@ -222,18 +224,20 @@
             max-width: 50vw;
             right: 0;
             bottom: 0;
+            border: 20px solid rgba(255, 255, 255, 0);
             background-image: url(../images/mockup1.png);
-            background-size: contain;
+            background-size: cover;
             background-repeat: no-repeat;
             background-position: center;
-            background-color: $primary;
+            background-color: $secondary;
             .btn {
-                background: $secondary;
+                background: $primary;
                 visibility: hidden;
                 opacity: 0;
             }
 
             &:nth-of-type(4) {
+                background-image: url(../images/mockup3.png);
                 background-color: #756C83;
                 bottom: 40vh;
 
@@ -243,31 +247,36 @@
                 }
             }
             &:nth-of-type(5) {
+                background-image: url(../images/mockup2.png);
                 background-color: #FBFBFB;
                 right: 25vw;
+                &:hover {
+                    border: 20px solid #756C83;
+                }
                 .btn {
                     background: #756C83;
                 }
             }
             &:nth-of-type(6) {
+                background-image: url(../images/mockup4.png);
                 background-color: $primary;
                 right: 25vw;
                 bottom: 40vh;
+                .btn {
+                    background: $secondary;
+                }
             }
 
             &.big {
+                background-image: url(../images/mockup.png);
                 max-height: 80vh;
                 height: 80vh;
                 width: 50vw;
                 left: 0;
-                background-color: $secondary;
-                .btn {
-                    background: $primary;
-                }
             }
 
             &:hover {
-                background-image: url(../images/mockup1hover.png);
+                background-color: white;
                 .btn {
                     visibility: visible;
                     opacity: 1;

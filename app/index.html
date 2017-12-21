@@ -16,11 +16,6 @@
 
         <!-- build:css styles/vendor.css -->
         <!-- bower:css -->
-        <link rel="stylesheet" href="/bower_components/gallery/dist/gallery.css" />
-        <link rel="stylesheet" href="/bower_components/gallery/dist/gallery.min.css" />
-        <link rel="stylesheet" href="/bower_components/gallery/dist/gallery.prefixed.css" />
-        <link rel="stylesheet" href="/bower_components/gallery/dist/gallery.prefixed.min.css" />
-        <link rel="stylesheet" href="/bower_components/gallery/dist/gallery.theme.css" />
         <!-- endbower -->
         <!-- endbuild -->
 
@@ -43,7 +38,7 @@
                                 <a class="nav-link" href="#skills" onclick="app.move('#skills', 'left', '0')">Skills</a>
                             </li>
                             <li>
-                                <a class="nav-link" href="#portfolio">Portfolio</a>
+                                <a class="nav-link" href="#portfolio" onclick="app.move('#portfolio', 'right', '0')">Portfolio</a>
                             </li>
                             <li>
                                 <a class="nav-link" href="#" onclick="app.move('#contact', 'top', '0')">Contact</a>
@@ -126,7 +121,7 @@
                                 <h2><span>&mdash;</span> Skills <span>&mdash;</span></h2>
                             </div>
                         </div>
-                        <div class="back"><a href="#start" onclick="app.move('#skills', 'left', '200vw')"><img class="arrow" src="images/left-arrow.svg" alt="BACK"></a></div>
+                        <div class="back"><a href="#start" onclick="app.move('#skills', 'left', '100vw')"><img class="arrow" src="images/left-arrow.svg" alt="BACK"></a></div>
 
 
                             <div class="slider">
@@ -205,8 +200,8 @@
 
                                     <div class="column medium-1" data-equalizer-watch>
                                         <figure class="square">
-                                            <img src="images/yeoman.svg" alt="">
-                                            <h3 class="text">YEOMAN</h3>
+                                            <img src="images/jquery.png" alt="">
+                                            <h3 class="text">JQUERY</h3>
                                         </figure>
                                         <figure class="square">
                                             <img src="images/yeoman.svg" alt="">
@@ -293,7 +288,56 @@
             <!-- END SKILLS -->
 
             <!-- PORTFOLIO -->
-            <section>
+            <section class="portfolio" id="portfolio">
+
+                <div class="row">
+                    <div class="column large-12">
+                        <h2><span>&mdash;</span> Portfolio <span>&mdash;</span></h2>
+                    </div>
+                </div>
+                <div class="back"><a href="#start" onclick="app.move('#portfolio', 'right', '100vw')"><img class="arrow" src="images/right-arrow.svg" alt="BACK"></a></div>
+                <div class="vc mockup big">
+<!--                    <img class="mockup big" src="images/mockup1.png" alt="">-->
+                    <div class="vc__inner">
+                        <a target="_blank" href="https://hfgdbsnjmaily.github.io/portfolio/" class="btn">LIVE</a>
+                        <a target="_blank" href="https://github.com/hfgdbsnjmaily/portfolio" class="btn">CODE</a>
+                    </div>
+
+
+
+                </div>
+
+                <div class="vc mockup">
+<!--                    <img class="mockup" src="images/mockup1.png" alt="">-->
+                    <div class="vc__inner">
+                        <a target="_blank" href="https://github.com/hfgdbsnjmaily/gkp" class="btn">CODE</a>
+                    </div>
+                </div>
+
+                <div class="vc mockup">
+<!--                    <img class="mockup" src="images/mockup1.png" alt="">-->
+                    <div class="vc__inner">
+                        <a target="_blank" href="https://hfgdbsnjmaily.github.io/pig-game/" class="btn">LIVE</a>
+                        <a target="_blank" href="https://github.com/hfgdbsnjmaily/pig-game" class="btn">CODE</a>
+                    </div>
+                </div>
+
+                <div class="vc mockup">
+<!--                    <img class="mockup" src="images/mockup1.png" alt="">-->
+                    <div class="vc__inner">
+                        <a target="_blank" href="https://hfgdbsnjmaily.github.io/omnifood/" class="btn">LIVE</a>
+                        <a target="_blank" href="https://github.com/hfgdbsnjmaily/omnifood" class="btn">CODE</a>
+                    </div>
+                </div>
+
+                <div class="vc mockup">
+<!--                    <img class="mockup" src="images/mockup1.png" alt="">-->
+                    <div class="vc__inner">
+                        <a target="_blank" href="https://hfgdbsnjmaily.github.io/cats-memory/" class="btn">LIVE</a>
+                        <a target="_blank" href="https://github.com/hfgdbsnjmaily/cats-memory" class="btn">CODE</a>
+
+                    </div>
+                </div>
 
 
             </section>

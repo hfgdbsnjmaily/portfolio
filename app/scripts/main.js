@@ -6,6 +6,92 @@ window.app = {
       $(document).foundation();
    },
 
+    keyboardMenu: function() {
+        let left, top, right, bottom;
+
+        document.onkeydown = function(e) {
+
+
+
+            switch (e.keyCode) {
+                case 37:
+
+                    if (left === 0) {
+
+                        app.move('#skills', 'left', '100vw');
+                        console.log('if');
+                        left = 1;
+
+                    } else if (bottom === 0 || top === 0) {
+
+                       console.log('stop');
+
+                    } else {
+
+                        app.move('#portfolio', 'right', '0');
+                        $('header.main-header').addClass('hidden');
+                        right = 0;
+                        console.log('else');
+                    }
+
+                    break;
+
+                case 38:
+
+                    if (top === 0) {
+                        app.move('#contact', 'top', '200vh');
+                        top = 1;
+
+                    } else if (right === 0 || left === 0) {
+
+                       console.log('stop');
+
+                    } else {
+                        app.move('#about-me', 'bottom', '0');
+                        $('header.main-header').addClass('hidden');
+                        bottom = 0;
+                    }
+
+                    break;
+
+                case 39:
+
+                    if (right === 0) {
+                        app.move('#portfolio', 'right', '100vw');
+                        right = 1;
+
+                    } else if (bottom === 0 || top === 0) {
+
+                       console.log('stop');
+
+                    } else {
+                        app.move('#skills', 'left', '0');
+                        $('header.main-header').addClass('hidden');
+                        left = 0;
+                    }
+
+                    break;
+
+                case 40:
+
+                    if (bottom === 0) {
+                        app.move('#about-me', 'bottom', '200vh');
+                        bottom = 1;
+                    } else if (right === 0 || left === 0) {
+
+                       console.log('stop');
+
+                    } else {
+                        app.move('#contact', 'top', '0');
+                        $('header.main-header').addClass('hidden');
+                        top = 0;
+                    }
+
+                    break;
+            }
+        }
+    },
+
     currentDiv: function currentDiv(n) {
         app.carousel(slideIndex = n);
         document.getElementById('slide1').className += ' animated bounceInLeft';
@@ -134,6 +220,7 @@ window.app = {
       app.animationOnScroll();
        app.toggleMenu();
        app.carousel(1);
+       app.keyboardMenu();
    }
 };
 
