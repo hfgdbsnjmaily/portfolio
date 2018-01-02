@@ -96,8 +96,13 @@ window.app = {
 
         document.onkeydown = function(e) {
             console.log(e.keyCode);
+
+            document.getElementById('keyboard').style.display = 'none';
+
             switch (e.keyCode) {
                 case 37:
+
+
 
                     if (left === 0) {
 
@@ -132,6 +137,7 @@ window.app = {
                     break;
 
                 case 39:
+
 
                     if (right === 0) {
                         app.move('#portfolio', 'right', '100vw');
@@ -191,6 +197,7 @@ window.app = {
         dots[slideIndex-1].className += ' active';
 
     },
+
 
     toggleMenu: function() {
 

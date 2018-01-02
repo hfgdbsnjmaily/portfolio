@@ -147,6 +147,28 @@
         position: relative;
         text-align: center;
         transition: all 0s ease-in-out;
+
+        .keyboard {
+            animation-delay: 3s;
+            img {
+                height: 40px;
+                width: auto;
+            }
+            p {
+                font-size: 12px;
+            }
+
+            z-index: 2;
+            position: absolute;
+            right: 28px;
+            bottom: 28px;
+
+            @include breakpoint(medium down) {
+                display: none;
+            }
+        }
+
+
     }
 
     .skills {
@@ -424,7 +446,13 @@
     }
     .skills {
 
+        background-image: url(../images/skills.jpg);
+        background-position: right;
+        background-repeat: no-repeat;
+
         .row {
+
+
             &:nth-child(1) {
                 margin-top: 30px;
                 margin-bottom: 30px;
@@ -434,6 +462,8 @@
                     margin-bottom: 0;
                 }
             }
+
+
         }
 
         .arrow-control {
@@ -509,7 +539,8 @@
             display:flex;
             align-items:center;
             justify-content:center;
-            //border: 1px solid $gray;
+
+
             &:hover {
                 img {
                     opacity: 1;
@@ -530,6 +561,7 @@
             align-items:center;
             justify-content:center;
             transition: all 0.5s ease-in-out;
+
 
             @include breakpoint(large down) {
                 padding: 15px;
