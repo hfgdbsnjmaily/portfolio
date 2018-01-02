@@ -6,10 +6,16 @@
     height: 100%;
     position: absolute;
     transition: all 0.5s ease-in-out;
-    background: url(../images/bg.png);
-    background-size: contain;
+    background: url(../images/bg3.png);
+    background-size: 80vw;
     background-position: center;
     background-repeat: no-repeat;
+    @include breakpoint(small only) {
+        background: url(../images/bg-mobile.png);
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
 
     .column {
         display: flex;

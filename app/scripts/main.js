@@ -19,7 +19,7 @@ window.app = {
         mc.get('swipe').set({ direction: Hammer.DIRECTION_ALL });
 
         // listen to events...
-        mc.on("swipeleft swiperight swipeup swipedown", function(ev) {
+        mc.on('swipeleft swiperight swipeup swipedown', function(ev) {
             console.log(ev.type);
             switch (ev.type) {
                 case 'swiperight':
