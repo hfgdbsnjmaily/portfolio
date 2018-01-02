@@ -42,6 +42,9 @@ a {
 
 p {
 	font-size: 16px;
+    @include breakpoint(small only) {
+        font-size: 12px;
+    }
 }
 
 h1,
@@ -139,5 +142,9 @@ $x: 8;
     &:hover {
         transform: scale(1.1) !important;
         background: none !important;
+    }
+
+    @include breakpoint(small only) {
+        width: 25px !important;
     }
 }

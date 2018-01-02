@@ -6,10 +6,96 @@ window.app = {
       $(document).foundation();
    },
 
+    mobileSwipeMenu: function() {
+        let myElement = document.getElementById('body');
+        let left, top, right, bottom;
+
+        // create a simple instance
+        // by default, it only adds horizontal recognizers
+        let mc = new Hammer(myElement);
+
+        // let the pan gesture support all directions.
+        // this will block the vertical scrolling on a touch-device while on the element
+        mc.get('swipe').set({ direction: Hammer.DIRECTION_ALL });
+
+        // listen to events...
+        mc.on("swipeleft swiperight swipeup swipedown", function(ev) {
+            console.log(ev.type);
+            switch (ev.type) {
+                case 'swiperight':
+
+                    if (right === 0) {
+
+                        app.move('#skills', 'left', '100vw');
+                        right = 1;
+
+                    } else if (bottom === 0 || top === 0) {
+
+                    } else {
+
+                        app.move('#portfolio', 'right', '0');
+                        $('header.main-header').addClass('hidden');
+                        left = 0;
+                    }
+
+
+                    break;
+
+                case 'swipedown':
+
+                    if (top === 0) {
+                        app.move('#contact', 'top', '200vh');
+                        top = 1;
+
+                    } else if (right === 0 || left === 0) {
+
+                    } else {
+                        app.move('#about-me', 'bottom', '0');
+                        $('header.main-header').addClass('hidden');
+                        bottom = 0;
+                    }
+
+                    break;
+
+                case 'swipeleft':
+
+                    if (left === 0) {
+                        app.move('#portfolio', 'right', '100vw');
+                        left = 1;
+
+                    } else if (bottom === 0 || top === 0) {
+                    } else {
+                        app.move('#skills', 'left', '0');
+                        $('header.main-header').addClass('hidden');
+                        right = 0;
+                    }
+
+                    break;
+
+                case 'swipeup':
+
+                    if (bottom === 0) {
+                        app.move('#about-me', 'bottom', '200vh');
+                        bottom = 1;
+                    } else if (right === 0 || left === 0) {
+
+                    } else {
+                        app.move('#contact', 'top', '0');
+                        $('header.main-header').addClass('hidden');
+                        top = 0;
+                    }
+
+                    break;
+            }
+
+        });
+    },
+
     keyboardMenu: function() {
         let left, top, right, bottom;
 
         document.onkeydown = function(e) {
+            console.log(e.keyCode);
             switch (e.keyCode) {
                 case 37:
 
@@ -119,7 +205,7 @@ window.app = {
     },
 
     move: function move(section, direction, value) {
-        console.log(section, direction, value);
+        //console.log(section, direction, value);
         $(section).css(direction, value);
     },
 
@@ -195,6 +281,7 @@ window.app = {
    init: function init() {
       app.foundation();
       app.scrollTo();
+       app.mobileSwipeMenu();
       app.animationOnScroll();
        app.toggleMenu();
        app.carousel(1);
