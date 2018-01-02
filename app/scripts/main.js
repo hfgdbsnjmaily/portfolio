@@ -81,8 +81,8 @@ window.app = {
 
     currentDiv: function currentDiv(n) {
         app.carousel(slideIndex = n);
-        document.getElementById('slide1').className += ' animated bounceInLeft';
-        document.getElementById('slide2').className += ' animated bounceInRight';
+        document.getElementById('slide1').className += ' animated swing';
+        document.getElementById('slide2').className += ' animated swing';
     },
 
     carousel: function(n) {
@@ -113,17 +113,8 @@ window.app = {
 
         });
 
-        $('.nav-link').click(function(){
-            $('.splash').addClass('hidden');
-
-        });
-
-
-
         $('.back > a').click(function(){
             $('header.main-header').removeClass('hidden');
-            $('.splash').removeClass('hidden');
-
         });
     },
 
