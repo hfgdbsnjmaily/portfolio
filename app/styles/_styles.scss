@@ -10,6 +10,7 @@
     background-size: 80vw;
     background-position: center;
     background-repeat: no-repeat;
+
     @include breakpoint(small only) {
         background: url(../images/bg-mobile.png);
         background-size: contain;
@@ -100,13 +101,11 @@
     }
 
     h1 {
-        //font-size: 80px;
         font-weight: 700;
 
     }
     
     h2 {
-        //font-size: 70px;
         span {
             color: $primary;
         }
@@ -156,6 +155,7 @@
             }
             p {
                 font-size: 12px;
+                margin-bottom: 10px;
             }
 
             z-index: 2;
@@ -166,6 +166,11 @@
             @include breakpoint(medium down) {
                 display: none;
             }
+        }
+
+        .swipe {
+            @extend .keyboard;
+            display: none;
         }
 
 
@@ -246,6 +251,7 @@
         }
 
         @include breakpoint(small only) {
+            background-size: 120vw;
 
             p {
                 text-align: left;
@@ -263,7 +269,7 @@
                     margin-top: 60px;
                     border-left: 2px $primary solid;
                     @include breakpoint(small only) {
-                        margin-top: 0;
+                        margin-top: -30px;
                     }
                 }
 
@@ -303,7 +309,6 @@
 
                 &:hover {
                     transform: scale(1.2);
-                    box-shadow: 0px 8px 15px rgba(128, 0, 128, 0.4);
                 }
 
                 @include breakpoint(small only) {
@@ -335,7 +340,7 @@
                 margin-top: 30px;
 
                 @include breakpoint(small only) {
-                    margin-top: 0;
+                    margin-top: -10px;
                 }
             }
         }
@@ -345,9 +350,16 @@
             justify-content:center;
             padding: 0;
             background-color: $secondary;
-            border: 2px solid rgb(255, 255, 255);
+            border-left: 2px solid rgb(255, 255, 255);
+            border-top: 2px solid rgb(255, 255, 255);
+            border-bottom: 2px solid rgb(255, 255, 255);
+
             transition: all .5s linear;
             transition: background-color 1s linear;
+
+            &:first-child {
+                border-right: 2px solid rgb(255, 255, 255);
+            }
 
             &:nth-last-child(2) {
                 background: $primary;
@@ -365,6 +377,7 @@
 
         .mockup {
 
+
             position: relative;
 
             height: 40vh;
@@ -376,7 +389,7 @@
 
 
             @include breakpoint(small only) {
-                height: 100px;
+                height: 90px;
             }
 
             .btn {
@@ -388,6 +401,9 @@
                 margin-right: 15px;
                 margin-top: 0;
                 margin-bottom: 0;
+                &:last-child {
+                    background: #756C83;
+                }
 
             }
 
@@ -399,7 +415,8 @@
                 top: 50%;
                 transform: translate(-50%, -50%);
                 @include breakpoint(medium down) {
-                    width: 150px;
+                    height: 100px;
+                    width: auto;
                 }
             }
 
@@ -415,7 +432,7 @@
 
 
                 @include breakpoint(small only) {
-                    height: 100px;
+                    height: 90px;
                     width: auto;
                     position: relative;
                     background-color: transparent;
@@ -426,8 +443,8 @@
                     width: 70vh;
 
                     @include breakpoint(small only) {
-                        width: 150px;
-                        height: auto;
+                        height: 100px;
+                        width: auto;
                     }
                 }
 
@@ -449,6 +466,7 @@
         background-image: url(../images/skills.jpg);
         background-position: right;
         background-repeat: no-repeat;
+        background-size: cover;
 
         .row {
 
@@ -476,8 +494,15 @@
                 z-index: 2;
                 position: absolute;
                 right: 15%;
-                top: 50%;
+                top: 55%;
                 transform: translate(-50%, -50%);
+                transform: scale(1);
+                transition: all .5s linear;
+                &:hover {
+                    transform: translate(-50%, -50%);
+                    transform: scale(1.1);
+                    background: none;
+                }
             }
             .left {
                 left: 15%;
@@ -681,15 +706,12 @@
         position: relative;
         color: white;
 
-        p {
-            margin: 0;
+        @include breakpoint(small only) {
+            margin-top: -130px;
         }
 
-        a {
-            color: white;
-            &:hover {
-                color: $primary;
-            }
+        p {
+            margin: 0;
         }
 
         &:before {

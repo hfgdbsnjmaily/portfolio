@@ -1,201 +1,174 @@
-var ANIM_END = 'animationend oAnimationEnd Animationend webkitAnimationEnd';
-var slideIndex = 1;
+let ANIM_END = 'animationend oAnimationEnd Animationend webkitAnimationEnd';
+let slideIndex = 1;
+let about = 0, portfolio = 0, skills = 0, contact = 0;
 
 window.app = {
-   foundation: function foundation() {
-      $(document).foundation();
-   },
+    foundation: function foundation() {
+        $(document).foundation();
+    },
 
-    mobileSwipeMenu: function() {
-        let myElement = document.getElementById('body');
-        let left, top, right, bottom;
+    moveUp: function moveUp() {
+        if (about === 0 && portfolio === 0 && skills === 0 && contact === 0) {
 
-        // create a simple instance
-        // by default, it only adds horizontal recognizers
-        let mc = new Hammer(myElement);
+            app.move('#about-me', 'bottom', '0');
+            $('header.main-header').addClass('hidden');
+            about = 1;
 
-        // let the pan gesture support all directions.
-        // this will block the vertical scrolling on a touch-device while on the element
-        mc.get('swipe').set({ direction: Hammer.DIRECTION_ALL });
+        } else if (contact === 1) {
+            app.move('#contact', 'top', '200vh');
+            contact = 0;
 
-        // listen to events...
-        mc.on('swipeleft swiperight swipeup swipedown', function(ev) {
-            console.log(ev.type);
-            switch (ev.type) {
-                case 'swiperight':
+        } else if (skills === 1 || portfolio === 1) {}
+        console.log(about, portfolio, skills, contact);
+    },
 
-                    if (right === 0) {
+    moveDown: function moveDown() {
+        if (about === 0 && portfolio === 0 && skills === 0 && contact === 0) {
 
-                        app.move('#skills', 'left', '100vw');
-                        right = 1;
+            app.move('#contact', 'top', '0');
+            $('header.main-header').addClass('hidden');
+            contact = 1;
 
-                    } else if (bottom === 0 || top === 0) {
+        } else if (about === 1) {
+            app.move('#about-me', 'bottom', '200vh');
+            about = 0;
 
-                    } else {
+        } else if (skills === 1 || portfolio === 1) {}
+        console.log(about, portfolio, skills, contact);
 
-                        app.move('#portfolio', 'right', '0');
-                        $('header.main-header').addClass('hidden');
-                        left = 0;
-                    }
+    },
 
+    moveLeft: function moveLeft() {
+        if (about === 0 && portfolio === 0 && skills === 0 && contact === 0) {
 
-                    break;
+            app.move('#portfolio', 'right', '0');
+            $('header.main-header').addClass('hidden');
+            portfolio = 1;
 
-                case 'swipedown':
+        } else if (skills === 1) {
+            app.move('#skills', 'left', '100vw');
+            skills = 0;
 
-                    if (top === 0) {
-                        app.move('#contact', 'top', '200vh');
-                        top = 1;
+        } else if (skills === 2) {
+            app.currentDiv(1);
+            skills = 1;
 
-                    } else if (right === 0 || left === 0) {
+        } else if (about === 1 || contact === 1) {}
+        console.log(about, portfolio, skills, contact);
+    },
 
-                    } else {
-                        app.move('#about-me', 'bottom', '0');
-                        $('header.main-header').addClass('hidden');
-                        bottom = 0;
-                    }
+    moveRight: function moveRight() {
+        if (about === 0 && portfolio === 0 && skills === 0 && contact === 0) {
 
-                    break;
+            app.move('#skills', 'left', '0');
+            $('header.main-header').addClass('hidden');
+            skills = 1;
 
-                case 'swipeleft':
+        } else if (portfolio === 1) {
+            app.move('#portfolio', 'right', '100vw');
+            portfolio = 0;
 
-                    if (left === 0) {
-                        app.move('#portfolio', 'right', '100vw');
-                        left = 1;
+        } else if (skills === 1) {
+            app.currentDiv(2);
+            skills = 2;
 
-                    } else if (bottom === 0 || top === 0) {
-                    } else {
-                        app.move('#skills', 'left', '0');
-                        $('header.main-header').addClass('hidden');
-                        right = 0;
-                    }
-
-                    break;
-
-                case 'swipeup':
-
-                    if (bottom === 0) {
-                        app.move('#about-me', 'bottom', '200vh');
-                        bottom = 1;
-                    } else if (right === 0 || left === 0) {
-
-                    } else {
-                        app.move('#contact', 'top', '0');
-                        $('header.main-header').addClass('hidden');
-                        top = 0;
-                    }
-
-                    break;
-            }
-
-        });
+        } else if (about === 1 || contact === 1) {}
+        console.log(about, portfolio, skills, contact);
     },
 
     keyboardMenu: function() {
-        let left, top, right, bottom;
-
         document.onkeydown = function(e) {
             console.log(e.keyCode);
 
             document.getElementById('keyboard').style.display = 'none';
+            document.getElementById('swipe').style.display = 'block';
 
             switch (e.keyCode) {
                 case 37:
-
-
-
-                    if (left === 0) {
-
-                        app.move('#skills', 'left', '100vw');
-                        left = 1;
-
-                    } else if (bottom === 0 || top === 0) {
-
-                    } else {
-
-                        app.move('#portfolio', 'right', '0');
-                        $('header.main-header').addClass('hidden');
-                        right = 0;
-                    }
-
+                    app.moveLeft();
                     break;
-
                 case 38:
-
-                    if (top === 0) {
-                        app.move('#contact', 'top', '200vh');
-                        top = 1;
-
-                    } else if (right === 0 || left === 0) {
-
-                    } else {
-                        app.move('#about-me', 'bottom', '0');
-                        $('header.main-header').addClass('hidden');
-                        bottom = 0;
-                    }
-
+                    app.moveUp();
                     break;
-
                 case 39:
-
-
-                    if (right === 0) {
-                        app.move('#portfolio', 'right', '100vw');
-                        right = 1;
-
-                    } else if (bottom === 0 || top === 0) {
-
-                    } else {
-                        app.move('#skills', 'left', '0');
-                        $('header.main-header').addClass('hidden');
-                        left = 0;
-                    }
-
+                    app.moveRight();
                     break;
-
                 case 40:
-
-                    if (bottom === 0) {
-                        app.move('#about-me', 'bottom', '200vh');
-                        bottom = 1;
-                    } else if (right === 0 || left === 0) {
-
-                    } else {
-                        app.move('#contact', 'top', '0');
-                        $('header.main-header').addClass('hidden');
-                        top = 0;
-                    }
-
+                    app.moveDown();
                     break;
             }
         }
     },
 
+    mobileSwipeMenu: function() {
+        let myElement = document.getElementById('body');
+
+        let mc = new Hammer(myElement);
+
+        mc.get('swipe').set({ direction: Hammer.DIRECTION_ALL });
+
+        mc.on('swipeleft swiperight swipeup swipedown', function(ev) {
+
+            document.getElementById('swipe').style.display = 'none';
+
+            switch (ev.type) {
+                case 'swiperight':
+                    app.moveLeft();
+                    break;
+                case 'swipeleft':
+                    app.moveRight();
+                    break;
+                case 'swipedown':
+                    app.moveUp();
+                    break;
+                case 'swipeup':
+                    app.moveDown();
+                    break;
+            }
+        })
+    },
+
     currentDiv: function currentDiv(n) {
         app.carousel(slideIndex = n);
-        document.getElementById('slide1').className += ' animated swing';
-        document.getElementById('slide2').className += ' animated swing';
+        document.getElementById('slide1').className += ' animated slideInLeft';
+        document.getElementById('slide2').className += ' animated slideInRight';
+
+        if (n === 2) {
+            skills = 2;
+        } else if (n === 1) {
+            skills = 1;
+        }
     },
 
     carousel: function(n) {
 
-        var i;
-        var x = document.getElementsByClassName('slide');
-        var dots = document.getElementsByClassName('dot');
-        if (n > x.length) {slideIndex = 1}
-        if (n < 1) {slideIndex = x.length}
-        for (i = 0; i < x.length; i++) {
-         x[i].style.visibility = 'hidden';
+        let i;
+        let slides = document.getElementsByClassName('slide');
+        let dots = document.getElementsByClassName('dot');
 
-         x[i].style.display = 'none';
+        if (n > slides.length) {
+            slideIndex = 1
         }
+
+        if (n < 1) {
+            slideIndex = slides.length;
+        }
+
+        for (i = 0; i < slides.length; i++) {
+
+            slides[i].style.visibility = 'hidden';
+
+            slides[i].style.display = 'none';
+        }
+
         for (i = 0; i < dots.length; i++) {
-         dots[i].className = dots[i].className.replace(' active', '');
-        }
-        x[slideIndex-1].style.visibility = 'visible';
-        x[slideIndex-1].style.display = 'block';
-        dots[slideIndex-1].className += ' active';
 
+            dots[i].className = dots[i].className.replace(' active', '');
+        }
+
+        slides[slideIndex-1].style.visibility = 'visible';
+        slides[slideIndex-1].style.display = 'block';
+        dots[slideIndex-1].className += ' active';
     },
 
 
@@ -212,96 +185,52 @@ window.app = {
     },
 
     move: function move(section, direction, value) {
-        //console.log(section, direction, value);
         $(section).css(direction, value);
     },
 
-   scrollTo: function() {
-      $('a[href*="#"]:not([href="#"])').click(function() {
 
-        if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+    animationOnScroll: function() {
+        $('[data-anim]').each(function(i, element) {
+            var animation = $(element).attr('data-anim');
+            var offset = $(element).attr('data-offset');
+            var delay = $(element).attr('data-delay');
+            var duration = $(element).attr('data-dur');
+            var res = $(element).attr('data-res');
 
-          let target = $(this.hash);
-          target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
-
-          if (target.length) {
-
-            $('html, body').animate({
-
-              scrollTop: target.offset().top
-            }, 1000);
-
-            return false;
-          }
-        }
-      });
-   },
-
-   animationOnScroll: function() {
-      $('[data-anim]').each(function(i, element) {
-         var animation = $(element).attr('data-anim');
-         var offset = $(element).attr('data-offset');
-         var delay = $(element).attr('data-delay');
-         var duration = $(element).attr('data-dur');
-         var res = $(element).attr('data-res');
-
-         $(element).unbind().removeData().waypoint(function() {
-            if (duration)
-               $(element).css('animation-duration', duration);
+            $(element).unbind().removeData().waypoint(function() {
+                if (duration)
+                    $(element).css('animation-duration', duration);
 
 
-            setTimeout(function() {
-               $(element).addClass(animation);
-               $(element).addClass('animated');
-            }, delay != undefined ? parseFloat(delay) * 1000 : 0);
+                    setTimeout(function() {
+                    $(element).addClass(animation);
+                    $(element).addClass('animated');
+                }, delay != undefined ? parseFloat(delay) * 1000 : 0);
 
-         }, {
+            }, {
+
             offset: offset ? offset : '80%'
-         });
-      });
-   },
+            });
+        });
+    },
 
-   scrolling: false,
-    
-   inBounds: function(element, offsetTop) {
-      if (!element.length || app.scrolling)
-         return false;
+    scrolling: false,
 
-      var topOfObject = element.position().top;
-      var bottomOfObject = element.position().top + element.outerHeight();
-      var topOfWindow = $(window).scrollTop();
-      var bottomOfWindow = $(window).scrollTop() + $(window).height();
-      var viewportHeight = $(window).height();
-
-      if (offsetTop == 'center') {
-         if ((topOfObject < (bottomOfWindow - viewportHeight / 2) && bottomOfObject > (bottomOfWindow - viewportHeight / 2)))
-            return true;
-      } else {
-         if ((topOfObject < topOfWindow + offsetTop && bottomOfObject > topOfWindow + offsetTop))
-            return true;
-      }
-      return false;
-   },
-
-
-
-   init: function init() {
-      app.foundation();
-      app.scrollTo();
-       app.mobileSwipeMenu();
-      app.animationOnScroll();
-       app.toggleMenu();
-       app.carousel(1);
-       app.keyboardMenu();
-   }
+    init: function init() {
+        app.foundation();
+        app.carousel(1);
+        app.mobileSwipeMenu();
+        app.animationOnScroll();
+        app.toggleMenu();
+        app.keyboardMenu();
+    }
 };
 
 $(function() {
-   $(document).scrollTop(0);
-   app.init();
-
-   $(window).resize(app.onResize);
-   $(document).on('scroll ontouchstart', app.onScroll);
-   $(window).trigger('resize');
-   $(window).trigger('scroll');
+    $(document).scrollTop(0);
+    app.init();
+    $(window).resize(app.onResize);
+    $(document).on('scroll ontouchstart', app.onScroll);
+    $(window).trigger('resize');
+    $(window).trigger('scroll');
 });
