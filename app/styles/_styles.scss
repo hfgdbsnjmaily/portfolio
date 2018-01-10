@@ -443,8 +443,9 @@
                     width: 70vh;
                     
                     @include breakpoint(medium down) {
-                        width: 400px;
                         height: auto;
+                        width: 400px;
+                        
                     }
 
                     @include breakpoint(small only) {
