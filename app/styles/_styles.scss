@@ -6,7 +6,7 @@
     height: 100%;
     position: absolute;
     transition: all 0.5s ease-in-out;
-    background: url(../images/bg3.png);
+    background: url(../images/bg3.jpg);
     background-size: 80vw;
     background-position: center;
     background-repeat: no-repeat;
@@ -87,9 +87,7 @@
     }
 
 }
-.hidden {
-    z-index: 1;
-}
+
 
 .page--landing {
 
@@ -107,7 +105,9 @@
     
     h2 {
         span {
+            display: inline-block;
             color: $primary;
+            visibility: hidden;
         }
         br {
             display: none;
@@ -239,7 +239,7 @@
         align-items:center;
         justify-content:center;
 
-        background-image: url(../images/about-me-bg.png);
+        background-image: url(../images/about-me-bg.jpg);
         background-size: contain;
         background-repeat: no-repeat;
         background-position: right bottom;
@@ -415,7 +415,7 @@
                 top: 50%;
                 transform: translate(-50%, -50%);
                 @include breakpoint(medium down) {
-                    height: 100px;
+                    height: 200px;
                     width: auto;
                 }
             }
@@ -441,6 +441,11 @@
 
                 img {
                     width: 70vh;
+                    
+                    @include breakpoint(medium down) {
+                        width: 400px;
+                        height: auto;
+                    }
 
                     @include breakpoint(small only) {
                         height: 100px;
@@ -712,6 +717,7 @@
 
         p {
             margin: 0;
+            margin-bottom: 10px;
         }
 
         &:before {
@@ -726,10 +732,70 @@
             display: block;
         }
     }
+    
+    
 
 } //end page--landing
 
+.preload {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    z-index: 1000000;
+    visibility: hidden;
+    opacity: 0;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    background-color: white;
+    transition: opacity 400ms ease-in-out, visibility 0s 400ms;
+}
 
+.visible {
+    visibility: visible;
+    opacity: 1;
+}
+
+
+.loader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 80px;
+    height: 80px;
+    transform: translate(-50%, -50%) rotate(45deg) translate3d(0,0,0);
+
+    span {
+        position: absolute;
+        display: block;
+        width: 40px;
+        height: 40px;
+        background-color: $primary;
+        animation: loaderBlock 1s infinite ease-in-out both;
+
+        &:nth-child(1) {
+            top: 0;
+            left: 0;
+        }
+        &:nth-child(2) {
+            top: 0;
+            right: 0;
+            background-color: $secondary;
+            animation: loaderBlockInverse 1s infinite ease-in-out both;
+        }
+        &:nth-child(3) {
+            bottom: 0;
+            left: 0;
+            background-color: $secondary;
+            animation: loaderBlockInverse 1s infinite ease-in-out both;
+        }
+        &:nth-child(4) {
+            bottom: 0;
+            right: 0;
+        }
+    }
+}
 
 
 

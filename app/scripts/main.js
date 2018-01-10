@@ -2,78 +2,125 @@ let ANIM_END = 'animationend oAnimationEnd Animationend webkitAnimationEnd';
 let slideIndex = 1;
 let about = 0, portfolio = 0, skills = 0, contact = 0;
 
+
+
 window.app = {
     foundation: function foundation() {
         $(document).foundation();
     },
+    
+    menu: function menu(direction) {
+        
+        switch(direction) {
+            case 'up':
+                if (about === 0 && portfolio === 0 && skills === 0 && contact === 0) {
 
-    moveUp: function moveUp() {
-        if (about === 0 && portfolio === 0 && skills === 0 && contact === 0) {
+                    app.move('#about-me', 'bottom', '0');
+                    about = 1;
 
-            app.move('#about-me', 'bottom', '0');
-            $('header.main-header').addClass('hidden');
-            about = 1;
+                    app.drawDashes('show');
 
-        } else if (contact === 1) {
-            app.move('#contact', 'top', '200vh');
-            contact = 0;
+                } else if (contact === 1) {
+                    app.move('#contact', 'top', '200vh');
+                    contact = 0;
+                    app.drawDashes('hide');
 
-        } else if (skills === 1 || portfolio === 1) {}
-        console.log(about, portfolio, skills, contact);
+                } else if (skills === 1 || portfolio === 1) {}
+                
+                console.log(about, portfolio, skills, contact);
+                
+                break;
+        
+            case 'down':
+                if (about === 0 && portfolio === 0 && skills === 0 && contact === 0) {
+
+                    app.move('#contact', 'top', '0');
+                    contact = 1;
+                    
+                    app.drawDashes('show');
+
+                } else if (about === 1) {
+                    app.move('#about-me', 'bottom', '200vh');
+                    about = 0;
+                    app.drawDashes('hide');
+
+                } else if (skills === 1 || portfolio === 1) {}
+        
+                console.log(about, portfolio, skills, contact);
+                
+                break;
+                
+            case 'left':
+                if (about === 0 && portfolio === 0 && skills === 0 && contact === 0) {
+
+                    app.move('#portfolio', 'right', '0');
+                    portfolio = 1;
+                    
+                    app.drawDashes('show');
+
+                } else if (skills === 1) {
+                    app.move('#skills', 'left', '100vw');
+                    skills = 0;
+                    app.drawDashes('hide');
+
+                } else if (skills === 2) {
+                    app.currentDiv(1);
+                    skills = 1;
+
+                } else if (about === 1 || contact === 1) {}
+                
+                console.log(about, portfolio, skills, contact);
+   
+                break;  
+                
+            case 'alwaysLeft':
+                
+                app.move('#skills', 'left', '100vw');
+                app.currentDiv(1);
+                skills = 0;
+                app.drawDashes('hide');
+
+                console.log(about, portfolio, skills, contact);
+                  
+                break;
+        
+            case 'right':
+                if (about === 0 && portfolio === 0 && skills === 0 && contact === 0) {
+
+                    app.move('#skills', 'left', '0');
+                    skills = 1;
+                    
+                    app.drawDashes('show');
+                    
+
+                } else if (portfolio === 1) {
+                    app.move('#portfolio', 'right', '100vw');
+                    portfolio = 0;
+                    app.drawDashes('hide');
+
+                } else if (skills === 1) {
+                    app.currentDiv(2);
+                    skills = 2;
+
+                } else if (about === 1 || contact === 1) {}
+                
+                console.log(about, portfolio, skills, contact);
+                
+                break;
+        }
     },
-
-    moveDown: function moveDown() {
-        if (about === 0 && portfolio === 0 && skills === 0 && contact === 0) {
-
-            app.move('#contact', 'top', '0');
-            $('header.main-header').addClass('hidden');
-            contact = 1;
-
-        } else if (about === 1) {
-            app.move('#about-me', 'bottom', '200vh');
-            about = 0;
-
-        } else if (skills === 1 || portfolio === 1) {}
-        console.log(about, portfolio, skills, contact);
-
-    },
-
-    moveLeft: function moveLeft() {
-        if (about === 0 && portfolio === 0 && skills === 0 && contact === 0) {
-
-            app.move('#portfolio', 'right', '0');
-            $('header.main-header').addClass('hidden');
-            portfolio = 1;
-
-        } else if (skills === 1) {
-            app.move('#skills', 'left', '100vw');
-            skills = 0;
-
-        } else if (skills === 2) {
-            app.currentDiv(1);
-            skills = 1;
-
-        } else if (about === 1 || contact === 1) {}
-        console.log(about, portfolio, skills, contact);
-    },
-
-    moveRight: function moveRight() {
-        if (about === 0 && portfolio === 0 && skills === 0 && contact === 0) {
-
-            app.move('#skills', 'left', '0');
-            $('header.main-header').addClass('hidden');
-            skills = 1;
-
-        } else if (portfolio === 1) {
-            app.move('#portfolio', 'right', '100vw');
-            portfolio = 0;
-
-        } else if (skills === 1) {
-            app.currentDiv(2);
-            skills = 2;
-
-        } else if (about === 1 || contact === 1) {}
-        console.log(about, portfolio, skills, contact);
+    
+    drawDashes: function(flag) {
+        
+        setTimeout(function(){ 
+            if (flag == 'show') {
+                $('.dash').addClass('flipInY');
+                $('.dash').css('visibility', 'visible');
+            } else {
+                $('.dash').removeClass('flipInY');
+                $('.dash').css('visibility', 'hidden');
+            }
+        }, 1000);
     },
 
     keyboardMenu: function() {
@@ -85,16 +132,16 @@ window.app = {
 
             switch (e.keyCode) {
                 case 37:
-                    app.moveLeft();
+                    app.menu('left');
                     break;
                 case 38:
-                    app.moveUp();
+                    app.menu('up');
                     break;
                 case 39:
-                    app.moveRight();
+                    app.menu('right');
                     break;
                 case 40:
-                    app.moveDown();
+                    app.menu('down');
                     break;
             }
         }
@@ -113,16 +160,16 @@ window.app = {
 
             switch (ev.type) {
                 case 'swiperight':
-                    app.moveLeft();
+                    app.menu('left');
                     break;
                 case 'swipeleft':
-                    app.moveRight();
+                    app.menu('right');
                     break;
                 case 'swipedown':
-                    app.moveUp();
+                    app.menu('up');
                     break;
                 case 'swipeup':
-                    app.moveDown();
+                    app.menu('down');
                     break;
             }
         })
@@ -171,23 +218,9 @@ window.app = {
         dots[slideIndex-1].className += ' active';
     },
 
-
-    toggleMenu: function() {
-
-        $('.main-header nav > ul > li > a').click(function(){
-            $('header.main-header').addClass('hidden');
-
-        });
-
-        $('.back > a').click(function(){
-            $('header.main-header').removeClass('hidden');
-        });
-    },
-
     move: function move(section, direction, value) {
         $(section).css(direction, value);
     },
-
 
     animationOnScroll: function() {
         $('[data-anim]').each(function(i, element) {
@@ -215,18 +248,28 @@ window.app = {
     },
 
     scrolling: false,
+    
+    preload: function() {
+        
+        const preload = document.getElementsByClassName('preload')[0];
+
+        window.addEventListener('load', function () {
+            preload.classList.remove('visible');
+        }, 2000);
+    },
 
     init: function init() {
         app.foundation();
+        
         app.carousel(1);
         app.mobileSwipeMenu();
         app.animationOnScroll();
-        app.toggleMenu();
         app.keyboardMenu();
     }
 };
 
 $(function() {
+    app.preload();
     $(document).scrollTop(0);
     app.init();
     $(window).resize(app.onResize);

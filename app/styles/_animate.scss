@@ -3355,3 +3355,23 @@
 	animation-name: slideOutUp;
 }
 
+@keyframes loaderBlock {
+    0%, 30% { 
+        transform: rotate(0);
+    }
+    100% {
+        transform: rotate(90deg);
+
+    }
+}
+@keyframes loaderBlockInverse {
+    0%, 20% { 
+        transform: rotate(0);
+    }
+    55% {
+        opacity: .8;
+    }
+    100% {
+        transform: rotate(-90deg);
+    }
+}

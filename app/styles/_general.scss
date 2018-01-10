@@ -117,6 +117,12 @@ $x: 8;
 
 .no-js [data-anim] {
 	visibility: visible !important;
+    
+}
+
+.no-js .preload {
+	display: none !important;
+    
 }
 
 .bg-cover {
