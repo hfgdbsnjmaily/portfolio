@@ -418,6 +418,10 @@
                     height: 200px;
                     width: auto;
                 }
+                @include breakpoint(small only) {
+                    height: 100px;
+                    width: auto;
+                }
             }
 
             &.big {
@@ -449,8 +453,8 @@
                     }
 
                     @include breakpoint(small only) {
-                        height: 100px;
-                        width: auto;
+                        //height: 100px;
+                        width: 100px;
                     }
                 }
 
